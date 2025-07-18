@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+
+spec:
+  type: NodePort
+  selector:  # Move selector here, at the same level as 'ports'
+    app: myapp
+    type: front-end
+  ports:
+    - targetPort: 80    # port on the Pod
+      port: 80          # port on the Service
+      nodePort: 30008   # fixed external port (30000-32767)
