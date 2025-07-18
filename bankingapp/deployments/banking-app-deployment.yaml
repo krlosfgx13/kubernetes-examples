@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: banking-app-deployment
+  labels:
+    name: banking-app-deployment
+    app: banking-app
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: banking-app-pod
+      app: banking-app
+      
+  template: # pod creation
+    metadata:
+      name: banking-app-pod
+      labels:
+        name: banking-app-pod
+        app: banking-app
+    spec:
+      containers:
+        - name: banking-app-container
+          image: bankingapp:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8082

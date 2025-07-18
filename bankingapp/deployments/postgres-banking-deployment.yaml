@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-banking-deployment
+  labels:
+    name: postgres-banking-deployment
+    app: banking-app
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: postgres-banking-pod
+      app: banking-app
+      
+  template:
+    metadata:
+      name: postgres-banking-pod
+      labels:
+        name: postgres-banking-pod
+        app: banking-app
+    spec:
+      containers:
+        - name: postgres
+          image: postgres
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: "dbuser"
+            - name: POSTGRES_PASSWORD
+              value: "dbuser"

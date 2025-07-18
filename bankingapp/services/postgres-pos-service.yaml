@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pos-db-pg  # host name referenced
+  labels:
+    name: postgres-pos-service
+    app: banking-app  # same to be grouped with the other pod objects
+spec:
+  type: ClusterIP  # internal service (default)
+  ports:
+    - port: 5432
+      targetPort: 5432
+      # we do not need nodePort because this will just be an internal service.
+  selector:  # to link this service to the postgres pod, match its labels
+    name: postgres-pos-pod
+    app: banking-app
+    # since this is an internal service, we don't need to expose it externally

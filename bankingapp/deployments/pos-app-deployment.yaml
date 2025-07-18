@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pos-app-deployment
+  labels:
+    name: pos-app-deployment
+    app: banking-app
+    
+spec:
+  replicas: 1
+  selector: # match and manage pods within the same app
+    matchLabels:
+      name: pos-app-pod
+      app: banking-app
+
+  template: #pod creation
+    metadata:
+      name: pos-app-pod
+      labels:
+        name: pos-app-pod
+        app: banking-app # use for all the components to be grouped as a single app
+
+    spec:
+      containers:
+        - name: pos-app-container
+          image: pos:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
