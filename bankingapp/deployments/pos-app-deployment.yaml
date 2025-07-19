@@ -23,7 +23,8 @@ spec:
     spec:
       containers:
         - name: pos-app-container
-          image: pos:latest
+          # image: pos:2.0.4 for local testing
+          image: us-central1-docker.pkg.dev/grounded-pivot-466222-u4/my-docker-repo/pos:2.0.4 # to reference the image in Artifact Registry
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 80
+            - containerPort: 8081
