@@ -10,4 +10,7 @@ psql -h db-pg -U postgres -d postgres -f create-database.sql
 echo "Running schema setup..."
 psql -h db-pg -U postgres -d bankingappdb -f create-schema.sql
 
+echo "Inserting data..."
+psql -h db-pg -U postgres -d bankingappdb -f insert-data.sql
+
 echo "✅ Database initialized."

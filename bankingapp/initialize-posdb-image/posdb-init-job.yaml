@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-posdb-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: init-posdb-container
+          # image: gcr.io/YOUR_PROJECT/init-db:latest
+          image: init-posdb:latest  # Use the local image built from Dockerfile
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: PGPASSWORD
+              value: "postgres"  # or your actual DB password
+      restartPolicy: Never

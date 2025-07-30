@@ -8,7 +8,8 @@ spec:
       containers:
         - name: init-bankingappdb-container
           # image: gcr.io/YOUR_PROJECT/init-db:latest
-          image: init-bankingappdb  # Use the local image built from Dockerfile
+          image: init-bankingappdb:latest  # Use the local image built from Dockerfile
+          imagePullPolicy: IfNotPresent
           env:
             - name: PGPASSWORD
               value: "postgres"  # or your actual DB password
