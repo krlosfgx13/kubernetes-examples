@@ -6,8 +6,8 @@ metadata:
     name: banking-app-service
     app: banking-app  # same to be grouped with the other pod objects
 spec:
-  type: NodePort # locally, but for cloud deployments, use LoadBalancer
-#  type: LoadBalancer
+#  type: NodePort # locally, but for cloud deployments, use LoadBalancer
+  type: LoadBalancer
   ports:
     - port: 8082  # service port
       targetPort: 8082  # pod port
