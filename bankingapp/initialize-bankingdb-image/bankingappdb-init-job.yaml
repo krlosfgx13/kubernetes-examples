@@ -7,8 +7,8 @@ spec:
     spec:
       containers:
         - name: init-bankingappdb-container
-          # image: gcr.io/YOUR_PROJECT/init-db:latest
-          image: init-bankingappdb:latest  # Use the local image built from Dockerfile
+          image: us-central1-docker.pkg.dev/grounded-pivot-466222-u4/my-docker-repo/init-bankingappdb:latest
+          # image: init-bankingappdb:latest  # Use the local image built from Dockerfile
           imagePullPolicy: IfNotPresent
           env:
             - name: PGPASSWORD
